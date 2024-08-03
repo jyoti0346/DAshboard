@@ -7,6 +7,14 @@ module "DashboardModule"{
   
 
 }
+
+module "DashboardModule2"{
+  source = "./Dynamic_dashboard"
+  dashboard = var.dashboard
+  page = var.page
+ 
+
+}
   
 
 

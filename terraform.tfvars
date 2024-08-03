@@ -108,5 +108,131 @@ dashboardTF = {
     
 }
 
+dashboard = {
+  "0" = {
+    name        = "Dynamic-Dashboard"
+    
+} }
+page = {
+  "0" = {
+    name = "Terraform"
+    billboard = {
+      "key1" = {
+        title  = "Requests per minute"
+        row    = 1
+        column = 1
+        width  = 6
+        height = 3
+
+        query = "FROM Transaction SELECT rate(count(*), 1 minute)"
+
+      }
+      "key2" = {
+         title  = "No of transactions"
+        row    = 1
+        column = 7
+        width  = 6
+        height = 3
+
+        query = "SELECT count(*) FROM Transaction"
+
+      }
+
+    }
+
+    bar = {
+      "key1" = {
+        title  =  "no of transactions"
+        row    = 2
+        column = 1
+        width  = 6
+        height = 3
+
+        query = "SELECT average(duration) FROM Transaction"
+      }
+      "key2" = {
+         title  =  "Average transaction duration, by application"
+        row    = 2
+        column = 7
+        width  = 6
+        height = 3
+
+        query = "SELECT count(*) FROM Transaction"
+
+      }
+    }
+    line = {
+      "key1" = {
+        title  = "Average transaction duration and the request per minute, by application"
+        row    = 3
+        column = 1
+        width  = 6
+        height = 3
+
+        query =  "FROM Transaction select max(duration) as 'max duration' where httpResponseCode = '504' timeseries since 5 minutes ago"
+    
+      },
+      "key2" = {
+        title  = "Overall CPU % Statistics"
+        row    = 3
+        column = 7
+        width  = 6
+        height = 3
+
+        query = "SELECT average(cpuSystemPercent), average(cpuUserPercent), average(cpuIdlePercent), average(cpuIOWaitPercent) FROM SystemSample  SINCE 1 hour ago TIMESERIES"
+
+      }
+    }
+    markdown = {
+      "key1" = {
+        title  = "Markdown Widget with Embedded NRQL"
+        row    = 4
+        column = 1
+        width  = 6
+        height = 3
+
+        text ="## Dashboard Summary\n\n**Total Transactions:** `{{#nrql}}SELECT count(*) FROM Transaction {{/nrql}}`\n\n**Average Duration:** `{{#nrql}}SELECT average(duration) FROM Transaction {{/nrql}}`\n\n**Error Rate:** `{{/nrql}}`"
+      }
+      "key2" = {
+         title  = "Dashboard Note"
+        row    = 4
+        column = 7
+        width  = 6
+        height = 3
+
+        text ="## This is a Markdown Widget\n\nYou can use **markdown** to format the content."
+
+      }
+
+    }
 
 
+  
+
+    table = {
+      "key1" = {
+        title  = "Average duration"
+        row    = 5
+        column = 1
+        width  = 6
+        height = 3
+
+        query =  "SELECT average(duration) as 'Average Duration', count(*) as 'Count'FROM Transaction"
+    }
+      "key2" = {
+        title  = "Average duration another"
+        row    = 5
+        column = 7
+        width  = 6
+        height = 3
+
+        query = "SELECT average(duration) as 'Average Response Time (ms)', count(*) as 'Total Requests'FROM Transaction "
+
+      }
+    }
+    }
+}
+
+
+
+    
