@@ -25,6 +25,7 @@ resource "newrelic_one_dashboard" "dynamicDashboard" {
 
       dynamic "widget_bar" {
         for_each = page.value.bar
+       
         iterator = widget
 
         content {

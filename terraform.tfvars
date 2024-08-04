@@ -116,6 +116,7 @@ dashboard = {
 page = {
   "0" = {
     name = "Terraform"
+    
     billboard = {
       "key1" = {
         title  = "Requests per minute"

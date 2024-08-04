@@ -3,16 +3,15 @@ module "DashboardModule"{
   dashboardTF =  var.dashboardTF
   account_id = var.account_id
   api_key = var.api_key
-  
-  
+  }
 
-}
 
 module "DashboardModule2"{
   source = "./Dynamic_dashboard"
   dashboard = var.dashboard
   page = var.page
- 
+  account_id = var.account_id
+  api_key = var.api_key
 
 }
   
